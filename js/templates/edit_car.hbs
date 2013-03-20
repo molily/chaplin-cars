@@ -1,0 +1,24 @@
+<h1>Edit Car</h1>
+
+<form>
+
+  <ul>
+    <li>
+      <label>
+        Name:
+        <input type="text" class="input-name" value="{{name}}">
+       </label>
+    </li>
+    <li>
+      <label>
+        Manufactured:
+        <input type="text" class="input-manufactured" value="{{manufactured}}">
+       </label>
+    </li>
+   </ul>
+
+  <p><button type="submit">Save</button></p>
+
+</form>
+
+<p>{{#link 'cars'}}Back to overview{{/link}}</p>
