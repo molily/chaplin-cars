@@ -4,8 +4,8 @@ define([
   'models/car',
   'views/cars_view',
   'views/car_view',
-  'views/edit_car_view',
-], function(Controller, Cars, Car, CarsView, CarView, EditCarView, NewCarView) {
+  'views/edit_car_view'
+], function(Controller, Cars, Car, CarsView, CarView, EditCarView) {
   'use strict';
 
   var models = [
