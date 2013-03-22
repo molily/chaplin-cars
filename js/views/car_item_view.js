@@ -10,6 +10,14 @@ define([
     className: 'car-item',
     listen: {
       'change model': 'render'
+    },
+    events: {
+      'click .delete': 'delete'
+    },
+    'delete': function (event) {
+      event.preventDefault();
+      console.log('delete');
+      this.trigger('delete', this.model);
     }
   });
 

@@ -51,7 +51,7 @@ define([
       var model = new Car();
       var collection = this.compose('cars');
       collection.push(model);
-      this.view = new EditCarView({ model: this.model });
+      this.view = new EditCarView({ model: model });
     }
 
   });

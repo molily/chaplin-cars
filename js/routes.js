@@ -6,6 +6,7 @@ define(function() {
   return function(match) {
 
     match('', 'cars#index', { name: 'cars' });
+    match('new', 'cars#new', { name: 'new_car' });
     match(':id', 'cars#show', { name: 'show_car' });
     match('edit/:id', 'cars#edit', { name: 'edit_car' });
 

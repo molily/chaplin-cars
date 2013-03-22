@@ -1,15 +1,24 @@
 define([
   'views/base/collection_view',
-  'views/car_item_view'
-], function(CollectionView, CarItemView) {
+  'views/car_item_view',
+  'text!templates/cars.hbs'
+], function(CollectionView, CarItemView, template) {
   'use strict';
 
   var CarsView = CollectionView.extend({
-    tagName: 'ol',
     className: 'cars',
     container: '#page-container',
-    itemView: CarItemView,
-    animationDuration: 50
+    listSelector: 'ol',
+    template: template,
+    initItemView: function (model) {
+      var view = new CarItemView({ model: model });
+      this.listenTo(view, 'delete', this.modelDeleted);
+      return view;
+    },
+    animationDuration: 0,
+    modelDeleted: function (model) {
+      this.collection.remove(model);
+    }
   });
 
   return CarsView;

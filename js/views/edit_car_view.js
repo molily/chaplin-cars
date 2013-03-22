@@ -17,7 +17,7 @@ define([
       console.log('EditCarView#save');
       event.preventDefault();
       this.model.set({
-        name: this.$('.input-name').val(),
+        name:         this.$('.input-name').val(),
         manufactured: this.$('.input-manufactured').val()
       });
       this.publishEvent('!router:routeByName', 'cars');
