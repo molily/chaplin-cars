@@ -10,6 +10,9 @@ define([
     container: '#page-container',
     listSelector: 'ol',
     template: template,
+    events: {
+      'click .set-collection': 'setCollection'
+    },
     initItemView: function (model) {
       var view = new CarItemView({ model: model });
       this.listenTo(view, 'delete', this.modelDeleted);
@@ -18,6 +21,9 @@ define([
     animationDuration: 0,
     modelDeleted: function (model) {
       this.collection.remove(model);
+    },
+    setCollection: function () {
+      this.trigger('setCollection');
     }
   });
 

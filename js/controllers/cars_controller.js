@@ -8,21 +8,28 @@ define([
 ], function(Controller, Cars, Car, CarsView, CarView, EditCarView) {
   'use strict';
 
-  var models = [
+  var baseModels = [
+    { id: 1, name: 'DeLorean DMC-12', manufactured: 1981 },
+    { id: 3, name: 'VW Scirocco', manufactured: 1974 },
+    { id: 5, name: 'Aston Martin DB5', manufactured: 1963 },
+    { id: 7, name: 'Maserati GranTurismo', manufactured: 2007 }
+  ];
+
+  var allModels = [
     { id: 1, name: 'DeLorean DMC-12', manufactured: 1981 },
     { id: 2, name: 'Chevrolet Corvette', manufactured: 1953 },
-    { id: 3, name: 'VW Scirocco', manufactured: 1974 },
+    { id: 3, name: 'VW Scirocco NEW', manufactured: 1974 },
     { id: 4, name: 'Opel Manta', manufactured: 1970 },
     { id: 5, name: 'Aston Martin DB5', manufactured: 1963 },
     { id: 6, name: 'Rolls-Royce Phantom II', manufactured: 1929 },
-    { id: 7, name: 'Maserati GranTurismo', manufactured: 2007 }
+    { id: 7, name: 'Maserati GranTurismo NEW', manufactured: 2007 }
   ];
 
   var CarsController = Controller.extend({
 
     beforeAction: {
       '.*': function () {
-        this.compose('cars', Cars, models);
+        this.compose('cars', Cars, baseModels);
       }
     },
 
@@ -30,6 +37,10 @@ define([
       //console.log('CarsController#index');
       var collection = this.compose('cars');
       this.view = new CarsView({ collection: collection });
+      var setCollection = function () {
+        collection.set(allModels);
+      };
+      this.view.on('setCollection', setCollection);
     },
 
     show: function(params) {
