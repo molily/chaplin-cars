@@ -8,7 +8,7 @@ define([
   var CarsView = CollectionView.extend({
     className: 'cars',
     container: '#page-container',
-    listSelector: 'ol',
+    listSelector: 'ul',
     template: template,
     events: {
       'click .set-collection': 'setCollection'
