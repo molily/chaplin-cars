@@ -11,8 +11,14 @@ define([
   var CarsController = Controller.extend({
 
     beforeAction: {
+      // Before all actions…
       '.*': function() {
+        // Create a new Cars collection or preserve the existing.
+        // This prevents the Cars collection from being disposed
+        // in order to share it between controller actions.
         this.compose('cars', Cars);
+
+        // Fetch collection from storage if it’s empty.
         var collection = this.compose('cars');
         if (collection.length == 0) {
           collection.fetch();
