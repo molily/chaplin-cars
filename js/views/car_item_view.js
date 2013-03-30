@@ -1,8 +1,7 @@
 define([
   'views/base/view',
-  'text!templates/car_item.hbs',
-  'models/car'
-], function(View, template, Car) {
+  'text!templates/car_item.hbs'
+], function(View, template) {
   'use strict';
 
   var CarItemView = View.extend({
@@ -21,6 +20,7 @@ define([
 
     'delete': function (event) {
       event.preventDefault();
+      // Shortcuts
       var model = this.model;
       var collection = model.collection;
       // Remove the model from its collection. This disposes this item view.
