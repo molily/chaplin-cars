@@ -8,21 +8,15 @@ define([
 ], function(Controller, Cars, Car, CarsView, CarView, EditCarView) {
   'use strict';
 
-  var models = [
-    { id: 1, name: 'DeLorean DMC-12', manufactured: 1981 },
-    { id: 2, name: 'Chevrolet Corvette', manufactured: 1953 },
-    { id: 3, name: 'VW Scirocco', manufactured: 1974 },
-    { id: 4, name: 'Opel Manta', manufactured: 1970 },
-    { id: 5, name: 'Aston Martin DB5', manufactured: 1963 },
-    { id: 6, name: 'Rolls-Royce Phantom II', manufactured: 1929 },
-    { id: 7, name: 'Maserati GranTurismo', manufactured: 2007 }
-  ];
-
   var CarsController = Controller.extend({
 
     beforeAction: {
-      '.*': function () {
-        this.compose('cars', Cars, models);
+      '.*': function() {
+        this.compose('cars', Cars);
+        var collection = this.compose('cars');
+        if (collection.length == 0) {
+          collection.fetch();
+        }
       }
     },
 
@@ -43,15 +37,14 @@ define([
       //console.log('CarsController#edit');
       var collection = this.compose('cars');
       var model = collection.get(params.id);
-      this.view = new EditCarView({ model: model });
+      this.view = new EditCarView({ model: model, collection: collection });
     },
 
     'new': function() {
       //console.log('CarsController#new');
       var model = new Car();
       var collection = this.compose('cars');
-      collection.push(model);
-      this.view = new EditCarView({ model: model });
+      this.view = new EditCarView({ model: model, collection: collection });
     }
 
   });

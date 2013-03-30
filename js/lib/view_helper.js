@@ -10,7 +10,7 @@ define([
 
   var slice = Array.prototype.slice;
 
-  var getURL = function (routeName, params) {
+  var getURL = function(routeName, params) {
     var url = false;
     // Backbone events are synchronous, so this is possible.
     mediator.publish('!router:reverse', routeName, params, function(result) {

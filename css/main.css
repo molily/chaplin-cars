@@ -1,3 +1,16 @@
 body {
   font-family: sans-serif;
 }
+
+.cars {
+  max-width: 30em;
+}
+
+.car-item:after {
+  content: '';
+  clear: both;
+}
+
+.car-item .controls {
+  float: right;
+}

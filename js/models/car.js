@@ -4,7 +4,14 @@ define([
 ], function(Chaplin, Model) {
   'use strict';
 
-  var Car = Model.extend();
+  var Car = Model.extend({
+
+    defaults: {
+      name: '',
+      year: new Date().getFullYear()
+    }
+
+  });
 
   return Car;
 });
