@@ -1,7 +1,8 @@
 define([
+  'underscore',
   'models/base/collection',
   'models/car'
-], function(Collection, Car) {
+], function(_, Collection, Car) {
   'use strict';
 
   var seed = [

@@ -1,5 +1,11 @@
 body {
-  font-family: sans-serif;
+  font-family: "Fira Sans OT", "Calibri", "Gill Sans", sans-serif;
+}
+
+input[type="text"] {
+  border: 1px solid gray;
+  font: inherit;
+  padding: 0 0.5em;
 }
 
 .cars {

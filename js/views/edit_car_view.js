@@ -1,8 +1,8 @@
 define([
   'views/base/view',
   'text!templates/edit_car.hbs',
-  'chaplin/mediator'
-], function(View, template) {
+  'chaplin'
+], function(View, template, Chaplin) {
   'use strict';
 
   var EditCarView = View.extend({
@@ -46,7 +46,7 @@ define([
       // Save the model
       collection.save();
       // Back to overview
-      this.publishEvent('!router:routeByName', 'cars');
+      Chaplin.utils.redirectTo({ name: 'cars' });
     }
 
   });
