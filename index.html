@@ -40,7 +40,10 @@ requirejs.config({
 
 // Bootstrap the application
 require(['application', 'routes'], function(Application, routes) {
-  new Application({ routes: routes });
+  new Application({
+    root: '/chaplin-cars/',
+    routes: routes
+  });
 });
 </script>
 
