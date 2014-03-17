@@ -14,40 +14,39 @@ define([
       // Create a new Cars collection or preserve the existing.
       // This prevents the Cars collection from being disposed
       // in order to share it between controller actions.
-      this.reuse('cars', Cars);
+      var cars = this.reuse('cars', Cars);
 
       // Fetch collection from storage if it’s empty.
-      var collection = this.reuse('cars');
-      if (collection.length == 0) {
-        collection.fetch();
+      if (cars.length == 0) {
+        cars.fetch();
       }
     },
 
     index: function() {
-      console.log('CarsController#index');
-      var collection = this.reuse('cars');
-      this.view = new CarsView({ collection: collection });
+      //console.log('CarsController#index');
+      var cars = this.reuse('cars');
+      this.view = new CarsView({ collection: cars });
     },
 
     show: function(params) {
       //console.log('CarsController#show');
-      var collection = this.reuse('cars');
-      var model = collection.get(params.id);
-      this.view = new CarView({ model: model });
+      var cars = this.reuse('cars');
+      var car = cars.get(params.id);
+      this.view = new CarView({ model: car });
     },
 
     edit: function(params) {
       //console.log('CarsController#edit');
-      var collection = this.reuse('cars');
-      var model = collection.get(params.id);
-      this.view = new EditCarView({ model: model, collection: collection });
+      var cars = this.reuse('cars');
+      var car = cars.get(params.id);
+      this.view = new EditCarView({ model: car, collection: cars });
     },
 
     'new': function() {
       //console.log('CarsController#new');
-      var model = new Car();
-      var collection = this.reuse('cars');
-      this.view = new EditCarView({ model: model, collection: collection });
+      var car = new Car();
+      var cars = this.reuse('cars');
+      this.view = new EditCarView({ model: car, collection: cars });
     }
 
   });
